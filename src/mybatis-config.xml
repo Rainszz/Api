@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 引用jdbc.properties配置文件 -->
+	<properties resource="jdbc.properties" />
+	<!-- 为javabean对象起别名，方便使用 -->
+	<typeAliases>
+		<!-- 批量自动的别名 -->
+		<package name="com.rains.api.bean"/>
+		<!-- 自定义别名 -->
+		<!-- <typeAlias type="com.jay.mybatis_01.bean.Emp" alias="emp"/> -->
+	</typeAliases>
+	<!-- 定义数据库信息 -->
+	<environments default="development">
+		<environment id="development">
+			<!-- 采用JDBC事务管理 -->
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<!-- 配置数据库连接信息 -->
+				<property name="driver" value="${jdbc.driver}" /><!-- 驱动名 -->
+				<property name="url" value="${jdbc.url}" /><!-- 连接地址 -->
+				<property name="username" value="${jdbc.username}" /><!-- 用户名 -->
+				<property name="password" value="${jdbc.password}" /><!-- 密码 -->
+			</dataSource>
+		</environment>
+	</environments>
+	<!-- 定义映射器 -->
+	<mappers>
+		<!-- <mapper resource="com/jay/mybatis_01/dao/EmpMapper.xml" /> -->
+		<package name="com.rains.api.dao"/>
+	</mappers>
+</configuration>
